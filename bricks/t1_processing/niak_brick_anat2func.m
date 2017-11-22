@@ -517,8 +517,8 @@ for num_i = 1:length(list_fwhm)
     if s~=0
         error('There was a problem with XFMCONCAT : %s',str_err);
     end
-    system(['rm ' file_transf_est]);
-    system(['rm ' file_transf_guess]);
+    system(['cp ' file_transf_est cat(2,'estimation_',int2str(num_i),'.xfm')]);
+    system(['cp ' file_transf_guess cat(2,'guess',int2str(num_i),'.xfm')]);
     system(['cp ' file_transf_tmp ' ' file_transf_guess]);    
 
 end
