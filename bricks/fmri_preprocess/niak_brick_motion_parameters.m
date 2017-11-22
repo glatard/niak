@@ -255,8 +255,7 @@ for num_v = 1:nb_vol
     end
 
     %% Perform rigid-body coregistration
-%    instr_minctracc = cat(2,'minctracc ',file_vol,' ',file_target,' ',file_xfm_tmp,' -xcorr  -source_mask ',file_mask_target,' -model_mask ',file_mask_target,' -forward -transformation identity.xfm -clobber -lsq6 -speckle 0 -est_center -tol ',num2str(opt.tol,7),' -',opt.interp,' -simplex 10 -model_lattice -step ',num2str(opt.step),' ',num2str(opt.step),' ',num2str(opt.step));
-    instr_minctracc = cat(2,'cp identity.xfm', ' ',file_xfm_tmp);
+    instr_minctracc = cat(2,'minctracc ',file_vol,' ',file_target,' ',file_xfm_tmp,' -xcorr  -source_mask ',file_mask_target,' -model_mask ',file_mask_target,' -forward -transformation identity.xfm -clobber -lsq6 -speckle 0 -est_center -tol ',num2str(opt.tol,7),' -',opt.interp,' -simplex 10 -model_lattice -step ',num2str(opt.step),' ',num2str(opt.step),' ',num2str(opt.step));
     if (num_v == 1)
         [fail,msg] = system(cat(2,'param2xfm identity.xfm -translation 0 0 0 -rotations 0 0 0 -clobber'));
 
@@ -264,10 +263,10 @@ for num_v = 1:nb_vol
             error('There was a problem with PARAM2XFM : %s',msg)
         end
 
-       if flag_verbose
+        if flag_verbose
             fprintf('MINCTRACC call : %s\n',instr_minctracc);
             fprintf('Performing motion correction estimation on volume : ');
-       end
+        end
     end
 
     if flag_verbose
